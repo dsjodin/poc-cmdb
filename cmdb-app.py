@@ -120,7 +120,7 @@ def add_host():
     cursor.execute("""
         INSERT INTO hosts (hostname, ip_address, owner, time_of_creation, deployment)
         VALUES (%s, %s, %s, %s, %s);
-    """, (hostname, ip_address, owner, time_of_creation, deployment))  # Renamed from ip_address
+    """, (hostname, ip_address, owner, time_of_creation, deployment))
     connection.commit()
     cursor.close()
     connection.close()
@@ -157,7 +157,7 @@ def list_hosts():
         host_list.append({
             "id": host[0],
             "hostname": host[1],
-            "request_id": host[2],  # Renamed from ip_address
+            "ip_address": host[2],
             "owner": host[3],
             "time_of_creation": host[4],
             "deployment": host[5]
