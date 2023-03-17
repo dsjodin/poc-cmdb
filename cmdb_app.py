@@ -1,3 +1,16 @@
+# This script creates a Flask application that connects to a PostgreSQL database and provides an interface for users to view, add, and delete host information from the "hosts" table.
+# The application has several routes, including:
+
+# The add_host route ("/api/hosts"): accepts a POST request with host information and adds it to the "hosts" table in the database
+# The delete_host route ("/api/hosts/string:hostname"): accepts a DELETE request with a hostname parameter and deletes the corresponding host information from the "hosts" table in the database
+# The list_hosts route ("/api/hosts"): returns a JSON object containing a list of all hosts in the "hosts" table in the database
+
+# Ensure that the PostgreSQL database has been configured using Setup.py.
+# Open a terminal window and navigate to the directory where the script is saved.
+# Run the script by typing "python3 cmdb_app.py" and pressing Enter.
+# Wait for the Flask application to start. The application will run on port 5000 by default.
+# Open a web browser and navigate to "http://localhost:5000/" to view the host information table.
+
 from flask import Flask, render_template_string, request, jsonify
 import psycopg2
 
