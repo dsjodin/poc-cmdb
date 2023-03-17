@@ -1,3 +1,5 @@
+# Not needed if you run setup.py
+
 import psycopg2
 
 POSTGRES_USER = 'postgres'
