@@ -107,7 +107,7 @@ def add_host():
     data = request.get_json()
 
     hostname = data.get("hostname")
-    ip_address = data.get("ip_address")  # Renamed from ip_address
+    ip_address = data.get("ip_address")  
     owner = data.get("owner")
     time_of_creation = data.get("time_of_creation")
     deployment = data.get("deployment")
