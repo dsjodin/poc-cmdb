@@ -1,11 +1,28 @@
 import subprocess
 import psycopg2
+import os
 
 POSTGRES_USER = 'postgres'
-POSTGRES_PASSWORD = 'PASSWORD'
+POSTGRES_PASSWORD = ''  # Leave this empty for now
 POSTGRES_HOST = 'localhost'
 POSTGRES_PORT = '5432'
 POSTGRES_DB = 'postgres'
+
+# Prompt user to enter the password
+POSTGRES_PASSWORD = input("Please enter a PostgreSQL password: ")
+
+# Update the password in the cmdb_app.py file
+def update_cmdb_app_password(password):
+    cmdb_app_file = 'cmdb_app.py'
+    if os.path.isfile(cmdb_app_file):
+        with open(cmdb_app_file, 'r') as file:
+            content = file.read()
+        content = content.replace("POSTGRES_PASSWORD = 'PASSWORD'", f"POSTGRES_PASSWORD = '{password}'")
+        with open(cmdb_app_file, 'w') as file:
+            file.write(content)
+        print("Updated password in cmdb_app.py")
+    else:
+        print("cmdb_app.py not found in the current directory")
 
 # Install PostgreSQL and psycopg2 using apt-get and pip
 def install_dependencies():
@@ -56,3 +73,4 @@ if __name__ == "__main__":
     install_dependencies()
     create_database()
     create_table()
+    update_cmdb_app_password(POSTGRES_PASSWORD)
