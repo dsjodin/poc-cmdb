@@ -90,7 +90,7 @@ def home():
                             <td>{{ host[2] }}</td>
                             <td>{{ host[3] }}</td>
                             <td>{{ host[4] }}</td>
-                            <td><a href="https://xint-vra01.vmlab.se/catalog/#/workload/deployment/{{ host[5] }}" target="_blank">{{ host[5] }}</a></td>
+                            <td><a href="https://VRA-FQDN/catalog/#/workload/deployment/{{ host[5] }}" target="_blank">{{ host[5] }}</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
