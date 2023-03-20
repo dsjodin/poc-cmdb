@@ -5,7 +5,8 @@
 # 1. Open a terminal window and navigate to the directory where the script is saved.
 # 2. Run the script by typing "python3 setup.py" and pressing Enter.
 # 3. When prompted, enter a PostgreSQL password and press Enter.
-# 4. Wait for the script to complete. The script will install PostgreSQL, pip, Flask and psycopg2, create a new database called "cmdb", create a new table called "hosts", and update the password in the cmdb_app.py file.
+# 4. Wait for the script to complete. The script will install PostgreSQL, pip, Flask and psycopg2, create a new database
+# called "cmdb", create a new table called "hosts", and update the password in the cmdb_app.py file.
 
 import subprocess
 import psycopg2
