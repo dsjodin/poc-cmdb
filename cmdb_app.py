@@ -4,8 +4,10 @@
 
 # The add_host route ("/api/hosts"): accepts a POST request with host information and adds it to the "hosts" table
 # in the database
+
 # The delete_host route ("/api/hosts/string:hostname"): accepts a DELETE request with a hostname parameter and deletes
 # the corresponding host information from the "hosts" table in the database
+
 # The list_hosts route ("/api/hosts"): returns a JSON object containing a list of all hosts in the "hosts" table in
 # the database
 
