@@ -11,7 +11,7 @@
 # The list_hosts route ("/api/hosts"): returns a JSON object containing a list of all hosts in the "hosts" table in
 # the database
 
-# Ensure that the PostgreSQL database has been configured using Setup.py.
+# Ensure that the PostgreSQL database has been configured using 'setup.py'.
 # Open a terminal window and navigate to the directory where the script is saved.
 # Run the script by typing "python3 cmdb_app.py" and pressing Enter.
 # Wait for the Flask application to start. The application will run on port 5000 by default.
