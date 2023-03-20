@@ -25,6 +25,7 @@ POSTGRES_PASSWORD = 'PASSWORD'
 POSTGRES_HOST = 'localhost'
 POSTGRES_PORT = '5432'
 POSTGRES_DB = 'cmdb'
+VRA_FQDN = 'old_fqdn'
 
 app = Flask(__name__)
 
@@ -109,7 +110,7 @@ def home():
                             <td>{{ host[2] }}</td>
                             <td>{{ host[3] }}</td>
                             <td>{{ host[4] }}</td>
-                            <td><a href="https://VRA-FQDN/catalog/#/workload/deployment/{{ host[5] }}" target="_blank">{{ host[5] }}</a></td>
+                            <td><a href="https://{{ VRA_FQDN }}/catalog/#/workload/deployment/{{ host[5] }}" target="_blank">{{ host[5] }}</a></td>
                         </tr>
                     {% endfor %}
                 </tbody>

@@ -17,6 +17,7 @@ POSTGRES_PASSWORD = None
 POSTGRES_HOST = 'localhost'
 POSTGRES_PORT = '5432'
 POSTGRES_DB = 'cmdb'
+VRA_FQDN = None
 
 def prompt_for_password():
     global POSTGRES_PASSWORD
@@ -24,6 +25,16 @@ def prompt_for_password():
         POSTGRES_PASSWORD = input("Please enter a password for the PostgreSQL user: ")
     print(f"Setting new password for '{POSTGRES_USER}' user to '{POSTGRES_PASSWORD}'.")
     confirmation = input(f"Password for user postgres will be updated and database created. Dependencies will be installed. Confirm (y/n) ")
+    if confirmation.lower() != 'y':
+        print("Aborting script.")
+        exit()
+
+def prompt_for_vra_fqdn():
+    global VRA_FQDN
+    while not VRA_FQDN:
+        VRA_FQDN = input("Please enter the VRA-FQDN: ")
+    print(f"Setting new VRA-FQDN to '{VRA_FQDN}'.")
+    confirmation = input(f"VRA-FQDN in cmdb_app.py file will be updated. Confirm (y/n) ")
     if confirmation.lower() != 'y':
         print("Aborting script.")
         exit()
@@ -48,6 +59,18 @@ def update_cmdb_app_password(password):
         with open(cmdb_app_file, 'w') as file:
             file.write(content)
         print("Updated password in cmdb_app.py")
+    else:
+        print("cmdb_app.py not found in the current directory")
+
+def update_cmdb_app_vra_fqdn(vra_fqdn):
+    cmdb_app_file = 'cmdb_app.py'
+    if os.path.isfile(cmdb_app_file):
+        with open(cmdb_app_file, 'r') as file:
+            content = file.read()
+        content = content.replace("VRA_FQDN = 'old_fqdn'", f"VRA_FQDN = '{vra_fqdn}'")
+        with open(cmdb_app_file, 'w') as file:
+            file.write(content)
+        print("Updated VRA-FQDN in cmdb_app.py")
     else:
         print("cmdb_app.py not found in the current directory")
 
@@ -93,8 +116,11 @@ def create_table():
 
 if __name__ == "__main__":
     prompt_for_password()
+    prompt_for_vra_fqdn()
     install_dependencies()
     update_postgres_password(POSTGRES_PASSWORD)
     update_cmdb_app_password(POSTGRES_PASSWORD)
+    update_cmdb_app_vra_fqdn(VRA_FQDN)
     create_database()
     create_table()
+    
