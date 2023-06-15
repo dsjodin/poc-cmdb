@@ -1,0 +1,12 @@
+version: "3.7"
+
+services:
+  cmdb:
+    build:
+      context: ./
+      tags:
+        - cmdb_app:v7
+    env_file:
+      - settings.env 
+    ports:
+      - 5000:5000
