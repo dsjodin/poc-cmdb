@@ -19,13 +19,14 @@
 
 from flask import Flask, render_template_string, request, jsonify
 import psycopg2
+import os
 
-POSTGRES_USER = 'postgres'
-POSTGRES_PASSWORD = 'PASSWORD'
-POSTGRES_HOST = 'localhost'
-POSTGRES_PORT = '5432'
-POSTGRES_DB = 'cmdb'
-VRA_FQDN = 'old_fqdn'
+POSTGRES_USER = os.environ["PSQL_USR"]
+POSTGRES_PASSWORD = os.environ["PSQL_PWD"]
+POSTGRES_HOST = os.environ["PSQL_HOST"]
+POSTGRES_PORT = os.environ["PSQL_PORT"]
+POSTGRES_DB = os.environ["PSQL_DB"]
+VRA_FQDN = os.environ["VRA_FQDN"]
 
 app = Flask(__name__)
 
